@@ -1,9 +1,12 @@
 version: "2"
 services:
-  htpasswd:
-    image: index.alaua.cn/alaudak8s/docker-htpasswd-registry:v1
+  zhang-htpasswd-registry:
+    image: registry:2.5
     ports:
-      - "5000:5000"
+      -  "5000:5000"
+    volumes:
+      - /pwd/auth:/auth
+      - /pwd/cert:/certs
     environment:
       - REGISTRY_AUTH=htpasswd
       - REGISTRY_HTTP_TLS_CERTIFICATE=/certs/registry_auth.crt
